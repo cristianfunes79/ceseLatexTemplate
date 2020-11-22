@@ -64,6 +64,7 @@
 Revisión & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Detalles de los cambios realizados} & Fecha      \\ \hline
 1.0      & Creación del documento                                          & 23/10/2020 \\ \hline
 1.1      & Avances hasta el punto 6                                           & 15/11/2020 \\ \hline
+1.2      & Agregado product backlog                                           & 21/11/2020 \\ \hline
 %1.2      & Otro ejemplo \newline
 %		   Con texto partido \newline
 %		   En varias líneas \newline
@@ -239,9 +240,15 @@ Para el desarrollo del presente proyecto se supone que:
 \section{Historias de usuarios (\textit{Product backlog})}
 \label{sec:backlog}
 
-\begin{consigna}{red}
-Descripción: En esta sección se deben incluir las historias de usuarios y su ponderación (\textit{history points}). Recordar que las historias de usuarios son descripciones cortas y simples de una característica contada desde la perspectiva de la persona que desea la nueva capacidad, generalmente un usuario o cliente del sistema. La ponderación es un número entero que representa el tamaño de la historia comparada con otras historias de similar tipo.
-\end{consigna}
+\begin{enumerate}
+    \item Un usuario debe poder acceder a cada sensor para conocer la temperatura actual de cada heladera. (3 story points).
+    \item Un usuario debe poder acceder al equipo central para ver un histórico de temperaturas de las heladeras. (5 story points).
+    \item Un usuario debe poder recibir alertas por SMS para saber que una temperatura esta fuera de rango. (8 story points).
+    \item Un usuario debe poder recibir alertas por SMS para saber que se produjo un corte de energía en una heladera. (8 story points).
+    \item Un usuario debe poder enviar un SMS al equipo para detener una alerta de SMS. (5 story points).
+    \item Un técnico instalador debe poder acceder a la agenda de contactos para dar de alta un nuevo usuario. (5 story points).
+    \item Un técnico instalador debe poder dar de alta un nuevo sensor para medir temperatura en una heladera. (13 story points).
+\end{enumerate}
 
 \section{5. Entregables principales del proyecto}
 \label{sec:entregables}
