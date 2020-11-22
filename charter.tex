@@ -11,7 +11,7 @@
 %\posgrado{Maestría en Internet de las cosas}
 
 % Tu nombre, se puede usar el cualquier lugar del documento con el comando \authorname
-\autor{Cristian Marcelo Funes} 
+\autor{Ing. Cristian Marcelo Funes} 
 
 % El nombre del director y co-director, se puede usar el cualquier lugar del documento con el comando \supname y \cosupname y \pertesupname y \pertecosupname
 \director{Ing. Ernesto Chediack}
@@ -63,7 +63,7 @@
 \rowcolor[HTML]{C0C0C0} 
 Revisión & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Detalles de los cambios realizados} & Fecha      \\ \hline
 1.0      & Creación del documento                                          & 23/10/2020 \\ \hline
-1.1      & Avances hasta el punto 5                                           & 15/11/2020 \\ \hline
+1.1      & Avances hasta el punto 6                                           & 15/11/2020 \\ \hline
 %1.2      & Otro ejemplo \newline
 %		   Con texto partido \newline
 %		   En varias líneas \newline
@@ -260,37 +260,54 @@ Descripción: En esta sección se deben incluir las historias de usuarios y su p
 \section{6. Desglose del trabajo en tareas}
 \label{sec:wbs}
 
-\begin{consigna}{red}
-Se recomienda mostrar el WBS mediante una lista indexada:
-
 \begin{enumerate}
-\item Grupo de tareas 1
+\item Organización del proyecto (45hs).
 	\begin{enumerate}
-	\item Tarea 1 (tantas hs)
-	\item Tarea 2 (tantas hs)
-	\item Tarea 3 (tantas hs)
+	\item Elaboración del informe de planificación del proyecto (40hs).
+	\item Búsqueda, instalación y configuración de herramientas para gestión (5hs).
 	\end{enumerate}
-\item Grupo de tareas 2
+\item I+D Hardware (208hs).
 	\begin{enumerate}
-	\item Tarea 1 (tantas hs)
-	\item Tarea 2 (tantas hs)
-	\item Tarea 3 (tantas hs)
+	\item Investigación y selección de módulos WiFi (8hs).
+	\item Investigación y selección del microcontrolador para el equipo central (8hs).
+	\item Investigación y selección del microcontrolador para el nodo sensor (8hs).
+	\item Investigación y selección del sensor de temperatura (8hs).
+	\item Investigación y selección de la batería y monitor de carga para equipo central y nodo sensor (16hs).
+	\item Desarrollo del circuito esquemático del modulo sensor (40hs).
+	\item Desarrollo del circuito esquemático del equipo central (40hs).
+	\item Desarrollo del PCB del modulo sensor (40hs).
+	\item Desarrollo del PCB del modulo sensor (40hs).
 	\end{enumerate}
-	\item Grupo de tareas 3
+\item I+D Firmware (310hs).
 	\begin{enumerate}
-	\item Tarea 1 (tantas hs)
-	\item Tarea 2 (tantas hs)
-	\item Tarea 3 (tantas hs)
-	\item Tarea 4 (tantas hs)
-	\item Tarea 5 (tantas hs)
+	\item Investigación de RTOS (16hs).
+	\item Instalación y configuración de las herramientas de desarrollo de Firmware (8hs).
+	\item Configuración de los repositorios de Firmware (8hs).
+	\item Diseño de la arquitectura de Software (30hs).
+	\item Desarrollo de las tareas para comunicación WiFi (40hs).
+	\item Desarrollo de las tareas para comunicación con módem celular (80hs).
+	\item Desarrollo de las tareas para lectura de sensor de temperatura (8hs).
+	\item Desarrollo de las tareas para administración del sistema (80hs).
+	\item Integración de todas las tareas (40hs).
+	\end{enumerate}
+\item Montaje y testeo del Hardware (50hs).
+	\begin{enumerate}
+	\item Montaje de la placa del equipo central (8hs).
+	\item Montaje de la placa del nodo sensor (8hs).
+	\item Programación de los equipos (2hs).
+	\item Testeo de funcionamiento del Hardware del equipo central (16hs).
+	\item Testeo de funcionamiento del equipo nodo sensor (16hs).
+	\end{enumerate}
+\item Testeo del Firmware (64hs).
+	\begin{enumerate}
+	\item Testing de la comunicación WiFi (8hs).
+	\item Testing del envío de SMS (8hs).
+	\item Testing de la configuración del equipo central (8hs).
+	\item Testing del sistema completo (40hs).
 	\end{enumerate}
 \end{enumerate}
 
-Cantidad total de horas: (tantas hs)
-
-Se recomienda que no haya ninguna tarea que lleve más de 40 hs. 
-
-\end{consigna}
+Cantidad total de horas: 667 hs.
 
 \section{7. Diagrama de Activity On Node}
 \label{sec:AoN}
