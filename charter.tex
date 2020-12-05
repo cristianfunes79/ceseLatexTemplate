@@ -64,7 +64,7 @@
 Revisión & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Detalles de los cambios realizados} & Fecha      \\ \hline
 1.0      & Creación del documento                                          & 23/10/2020 \\ \hline
 1.1      & Avances hasta el punto 6                                           & 15/11/2020 \\ \hline
-1.2      & Agregado product backlog                                           & 21/11/2020 \\ \hline
+1.2      & Agregado product backlog \newline Agregado nuevo item en tareas  & 21/11/2020 \\ \hline
 %1.2      & Otro ejemplo \newline
 %		   Con texto partido \newline
 %		   En varias líneas \newline
@@ -270,20 +270,21 @@ Para el desarrollo del presente proyecto se supone que:
 \begin{enumerate}
 \item Organización del proyecto (45hs).
 	\begin{enumerate}
-	\item Elaboración del informe de planificación del proyecto (40hs).
 	\item Búsqueda, instalación y configuración de herramientas para gestión (5hs).
+	\item Elaboración del informe de planificación del proyecto (40hs).
 	\end{enumerate}
-\item I+D Hardware (208hs).
+\item I+D Hardware (216hs).
 	\begin{enumerate}
 	\item Investigación y selección de módulos WiFi (8hs).
-	\item Investigación y selección del microcontrolador para el equipo central (8hs).
-	\item Investigación y selección del microcontrolador para el nodo sensor (8hs).
+	\item Investigación y selección del modem 4G (8hs).
 	\item Investigación y selección del sensor de temperatura (8hs).
+	\item Investigación y selección del microcontrolador para el nodo sensor (8hs).
+	\item Investigación y selección del microcontrolador para el equipo central (8hs).
 	\item Investigación y selección de la batería y monitor de carga para equipo central y nodo sensor (16hs).
 	\item Desarrollo del circuito esquemático del modulo sensor (40hs).
 	\item Desarrollo del circuito esquemático del equipo central (40hs).
 	\item Desarrollo del PCB del modulo sensor (40hs).
-	\item Desarrollo del PCB del modulo sensor (40hs).
+	\item Desarrollo del PCB del equipo central (40hs).
 	\end{enumerate}
 \item I+D Firmware (310hs).
 	\begin{enumerate}
@@ -299,45 +300,162 @@ Para el desarrollo del presente proyecto se supone que:
 	\end{enumerate}
 \item Montaje y testeo del Hardware (50hs).
 	\begin{enumerate}
-	\item Montaje de la placa del equipo central (8hs).
 	\item Montaje de la placa del nodo sensor (8hs).
-	\item Programación de los equipos (2hs).
-	\item Testeo de funcionamiento del Hardware del equipo central (16hs).
-	\item Testeo de funcionamiento del equipo nodo sensor (16hs).
+	\item Montaje de la placa del equipo central (8hs).
+	\item Programación base del nodo sensor (1hs).
+	\item Programación base del equipo central (1hs).
 	\end{enumerate}
 \item Testeo del Firmware (64hs).
 	\begin{enumerate}
 	\item Testing de la comunicación WiFi (8hs).
 	\item Testing del envío de SMS (8hs).
 	\item Testing de la configuración del equipo central (8hs).
+	\item Testing de la lectura del sensor (4hs).
 	\item Testing del sistema completo (40hs).
+	\end{enumerate}
+\item Defensa del Proyecto Final (68hs).
+	\begin{enumerate}
+	\item Elaboración del informe final (50hs).
+	\item Elaboración de la presentación final (18hs).
 	\end{enumerate}
 \end{enumerate}
 
-Cantidad total de horas: 667 hs.
+Cantidad total de horas: 715 hs.
 
 \section{7. Diagrama de Activity On Node}
 \label{sec:AoN}
 
-\begin{consigna}{red}
-Armar el AoN a partir del WBS definido en la etapa anterior. 
+\usetikzlibrary{positioning}
 
-%La figura \ref{fig:AoN} fue elaborada con el paquete latex tikz y pueden consultar la siguiente referencia \textit{online}:
+%circles
+\tikzstyle{startstop} = [draw=black, circle, text centered, text width=1cm, fill=white!30, rounded corners=.7ex]
+\tikzstyle{break}     = [draw=black, circle, text centered, text width=0.5cm, fill=white!30]
 
-%\url{https://www.overleaf.com/learn/latex/LaTeX_Graphics_using_TikZ:_A_Tutorial_for_Beginners_(Part_3)\%E2\%80\%94Creating_Flowcharts}
+%tasks
+\tikzstyle{tasktype1} = [draw=black,rectangle, text centered, text width=2cm, fill=gray!30]
+\tikzstyle{tasktype2} = [draw=black,rectangle, text centered, text width=2cm, fill=red!30]
+\tikzstyle{tasktype3} = [draw=black,rectangle, text centered, text width=2cm, fill=green!30]
+\tikzstyle{tasktype4} = [draw=black,rectangle, text centered, text width=2cm, fill=blue!30]
+\tikzstyle{tasktype5} = [draw=black,rectangle, text centered, text width=2cm, fill=orange!30]
+\tikzstyle{tasktype6} = [draw=black,rectangle, text centered, text width=2cm, fill=yellow!50]
 
-\end{consigna}
+%Esto  es para habilitar el uso de > para las arrows, si no se agrega aparece un error de compilacion
+\shorthandoff{>}
+\tikzstyle{arrow} = [thick,->,>=stealth]
 
-\begin{figure}[htpb]
-\centering 
-\includegraphics[width=.8\textwidth]{./Figuras/AoN.png}
-\caption{Diagrama en \textit{Activity on Node}}
-\label{fig:AoN}
-\end{figure}
+\begin{tikzpicture}[node distance=1cm]
+    \node (start) [startstop] {\tiny INICIO\\23/10/20};
+    %Section 1 tasks
+    \node (task1-1) [tasktype1, right of=start, xshift=1.5cm    ]   {\tiny 1.1 Herramientas para gestión \\t = 5};
+    \node (task1-2) [tasktype1, right of=task1-1, xshift=2cm  ]   {\tiny 1.2 Informe del proyecto \\t = 40};
+    %Section 2 tasks
+    \node (task2-1) [tasktype2, right of=task1-2, xshift=2cm, yshift= 1cm ] {\tiny 2.1 Selección de módulo WiFi \\t = 8};
+    \node (task2-2) [tasktype2, right of=task1-2, xshift=2cm, yshift=-1cm ] {\tiny 2.2 Selección de modem 4G \\t = 8};
+    \node (task2-3) [tasktype2, right of=task2-1, xshift=2cm ] {\tiny 2.3 Selección de sensor de temperatura \\t =  8};
+    \node (task2-4) [tasktype2, right of=task2-3, xshift=2cm ] {\tiny 2.4 Selección de microcontrolador del nodo sensor \\t = 8};
+    \node (task2-5) [tasktype2, right of=task2-2, xshift=2cm ] {\tiny 2.5 Selección de microcontrolador del equipo central \\t = 8};
+    \node (task2-6) [tasktype2, below of=task1-1, yshift=-3cm ]{\tiny 2.6 Selección de batería y monitor de carga \\t = 16};
+    \node (task2-7) [tasktype2, right of=task2-6, xshift=2cm, yshift= 1cm ]  {\tiny 2.7 Circuito esquemático del modulo sensor \\t = 40};
+    \node (task2-8) [tasktype2, below of=task2-7, yshift=-1cm] {\tiny 2.8 Circuito esquemático del equipo central \\t = 40};
+    \node (task2-9) [tasktype2, right of=task2-7, xshift=2cm ] {\tiny 2.9 PCB del modulo sensor \\t =  40};
+    \node (task2-10)[tasktype2, right of=task2-8, xshift=2cm ] {\tiny 2.10 PCB del equipo central \\t =  40};
 
-Indicar claramente en qué unidades están expresados los tiempos.
-De ser necesario indicar los caminos semicríticos y analizar sus tiempos mediante un cuadro.
-Es recomendable usar colores y un cuadro indicativo describiendo qué representa cada color, como se muestra en el siguiente ejemplo:
+    %section 3 tasks
+    \node (task3-1) [tasktype3, below of=task2-6, yshift=-5cm ]{\tiny 3.1 Investigación de RTOS \\t = 16};
+    \node (task3-2) [tasktype3, right of=task3-1, xshift=2cm ] {\tiny 3.2 Instalación y configuración de las herramientas de desarrollo de Firmware \\t = 8};
+    \node (task3-3) [tasktype3, right of=task3-2, xshift=2cm, yshift=1cm ] {\tiny 3.3 Configuración de los repositorios de Firmware \\t = 8};
+    \node (task3-4) [tasktype3, below of=task3-3, yshift=-1cm ]{\tiny 3.4 Diseño de la arquitectura de Software \\t = 30};
+    \node (task3-5) [tasktype3, right of=task3-3, xshift=2cm, yshift=2cm ] {\tiny 3.5 Desarrollo de tareas para comunicación WiFi \\t = 40};
+    \node (task3-6) [tasktype3, below of=task3-5, yshift=-1cm ] {\tiny 3.6 Desarrollo de tareas para comunicación con módem celular \\t = 80};
+    \node (task3-7) [tasktype3, below of=task3-6, yshift=-1cm ] {\tiny 3.7 Desarrollo de tareas para lectura de sensor de temperatura \\t = 8};
+    \node (task3-8) [tasktype3, below of=task3-7, yshift=-1cm ] {\tiny 3.8 Desarrollo de tareas para administración del sistema \\t = 80};
+    \node (task3-9) [tasktype3, below of=task3-1, yshift=-4.5cm ] {\tiny 3.9 Integración de todas las tareas \\t = 40};
+
+    %section 4 tasks
+    \node (task4-1) [tasktype4, right of=task2-9, xshift=2cm ] {\tiny 4.1 Montaje de la placa del nodo sensor \\t = 8};
+    \node (task4-2) [tasktype4, right of=task2-10, xshift=2cm ] {\tiny 4.2 Montaje de la placa del equipo central \\t = 8};
+    \node (task4-3) [tasktype4, right of=task4-1, xshift=2cm ] {\tiny 4.3 Programación base del nodo sensor \\t = 1};
+    \node (task4-4) [tasktype4, right of=task4-2, xshift=2cm ] {\tiny 4.4 Programación base del equipo central \\t = 1};
+
+    %section 5 tasks
+    \node (task5-1) [tasktype5, right of=task3-5, xshift=2cm ] {\tiny 5.1 Testing de la comunicación WiFi \\t = 8};
+    \node (task5-2) [tasktype5, right of=task3-6, xshift=2cm ] {\tiny 5.2 Testing del envío de SMS \\t = 8};
+    \node (task5-3) [tasktype5, right of=task3-8, xshift=2cm ] {\tiny 5.3 Testing de la configuración del equipo central \\t = 8};
+    \node (task5-4) [tasktype5, right of=task3-7, xshift=2cm ] {\tiny 5.4 Testing del sensor \\t = 4};
+    \node (task5-5) [tasktype5, right of=task3-9, xshift=2cm ] {\tiny 5.5 Testing del sistema completo \\t = 40};
+
+    %section 6 tasks
+    \node (task6-1) [tasktype6, right of=task5-5, xshift=2cm ] {\tiny 6.1 Elaboración del informe final \\t = 50};
+    \node (task6-2) [tasktype6, right of=task6-1, xshift=2cm ] {\tiny 6.2 Elaboración de la presentación final \\t = 18};
+
+    %end
+    \node (end) [startstop, right of=task6-2, xshift=2cm ] {\tiny FIN};
+
+    %lines and arrows
+    \draw[arrow] (start) -- (task1-1);
+    \draw[arrow] (task1-1) -- (task1-2);
+    \draw[arrow] (task1-2) -- node {} ++(1.5cm,0) -- node {} ++(0, 1cm) -- (task2-1);
+    \draw[arrow] (task1-2) -- node {} ++(1.5cm,0) -- node {} ++(0,-1cm) -- (task2-2);
+    \draw[arrow] (task2-1) -- (task2-3);
+    \draw[arrow] (task2-3) -- (task2-4);
+    \draw[arrow] (task2-2) -- (task2-5);
+    \draw[arrow] (task2-4) -- node {} ++(1.5cm,0) -- node {} ++(0,-3.1cm) -- node {} ++(-16.7cm,0) -- node {} ++(0,-1.9cm) -- (task2-6);
+    \draw[arrow] (task2-5) -- node {} ++(4.5cm,0) -- node {} ++(0,-1.1cm) -- node {} ++(-16.7cm,0) -- node {} ++(0,-7.9cm) -- (task3-1);
+    \draw[arrow] (task2-6) -- node {} ++(1.5cm,0) -- node {} ++(0, 1cm) -- (task2-7);
+    \draw[arrow] (task2-6) -- node {} ++(1.5cm,0) -- node {} ++(0,-1cm) -- (task2-8);
+    \draw[arrow] (task2-7) -- (task2-9);
+    \draw[arrow] (task2-8) -- (task2-10);
+    \draw[arrow] (task3-1) -- (task3-2);
+    \draw[arrow] (task3-2) -- node {} ++(1.5cm,0) -- node {} ++(0, 1cm) -- (task3-3);
+    \draw[arrow] (task3-2) -- node {} ++(1.5cm,0) -- node {} ++(0,-1cm) -- (task3-4);
+    \draw[arrow] (task2-9) -- (task4-1);
+    \draw[arrow] (task2-10) -- (task4-2);
+    \draw[arrow] (task4-1) -- (task4-3);
+    \draw[arrow] (task4-2) -- (task4-4);
+
+    \draw[arrow] (task3-3) -- node {} ++(1.3cm,0) -- node {} ++(0,-1cm) -- node {} ++(0.3cm,0) -- node {} ++(0,-3cm) --     (task3-8);
+    \draw[arrow] (task3-4) -- node {} ++(1.3cm,0) -- node {} ++(0, 1cm) -- node {} ++(0.3cm,0) -- node {} ++(0, 3cm) --     (task3-5);
+    \draw[arrow] (task3-3) -- node {} ++(1.3cm,0) -- node {} ++(0,-1cm) -- node {} ++(0.3cm,0) -- node {} ++(0,-1cm) --   (task3-7);
+    \draw[arrow] (task3-4) -- node {} ++(1.3cm,0) -- node {} ++(0, 1cm) -- node {} ++(0.3cm,0) -- node {} ++(0, 1cm) --   (task3-6);
+
+    \draw[arrow] (task3-5) -- (task5-1);
+    \draw[arrow] (task3-6) -- (task5-2);
+    \draw[arrow] (task3-7) -- (task5-4);
+    \draw[arrow] (task3-8) -- (task5-3);
+
+    \draw[arrow] (task4-3) -- node {} ++(1.5cm,0) -- node {} ++(0,-11.1cm)  -- node {} ++(-16.7cm,0) -- node {} ++(0,-1.4cm) -- (task3-9);
+    \draw[arrow] (task4-4) -- node {} ++(1.5cm,0) -- node {} ++(0,-9.1cm)   -- node {} ++(-16.7cm,0) -- node {} ++(0,-1.4cm) -- (task3-9);
+    \draw[arrow] (task5-1) -- node {} ++(1.5cm,0) -- node {} ++(0,-7.1cm)   -- node {} ++(-16.7cm,0) -- node {} ++(0,-1.4cm) -- (task3-9);
+    \draw[arrow] (task5-2) -- node {} ++(1.5cm,0) -- node {} ++(0,-5.1cm)   -- node {} ++(-16.7cm,0) -- node {} ++(0,-1.4cm) -- (task3-9);
+    \draw[arrow] (task5-4) -- node {} ++(1.5cm,0) -- node {} ++(0,-3.1cm)   -- node {} ++(-16.7cm,0) -- node {} ++(0,-1.4cm) -- (task3-9);
+    \draw[arrow] (task5-3) -- node {} ++(1.5cm,0) -- node {} ++(0,-1.1cm)   -- node {} ++(-16.7cm,0) -- node {} ++(0,-1.4cm) -- (task3-9);
+    
+    \draw[arrow] (task3-9) -- (task5-5);
+    \draw[arrow] (task5-5) -- (task6-1);
+    \draw[arrow] (task6-1) -- (task6-2);
+    \draw[arrow] (task6-2) -- (end);
+
+\end{tikzpicture}\vspace{2cm}                                     
+
+\begin{tikzpicture}
+
+%tasks
+\tikzstyle{tasktype1} = [draw=black,rectangle, text centered, text width=2cm, fill=gray!30]
+\tikzstyle{tasktype2} = [draw=black,rectangle, text centered, text width=2cm, fill=red!30]
+\tikzstyle{tasktype3} = [draw=black,rectangle, text centered, text width=2cm, fill=green!30]
+\tikzstyle{tasktype4} = [draw=black,rectangle, text centered, text width=2cm, fill=blue!30]
+\tikzstyle{tasktype5} = [draw=black,rectangle, text centered, text width=2cm, fill=orange!30]
+\tikzstyle{tasktype6} = [draw=black,rectangle, text centered, text width=2cm, fill=yellow!50]
+
+\node (task1) [tasktype1  ]                             {\tiny Org. del Proyecto};
+\node (task2) [tasktype2, right of=task1, xshift=2cm ]  {\tiny I+D Hardware};
+\node (task3) [tasktype3, right of=task2, xshift=2cm ]  {\tiny I+D Firmware};
+\node (task4) [tasktype4, right of=task3, xshift=2cm ]  {\tiny Montaje y testing HW};
+\node (task5) [tasktype5, right of=task4, xshift=2cm ]  {\tiny Testing de FW};
+\node (task6) [tasktype6, right of=task5, xshift=2cm ]  {\tiny Presentación del Proyecto};
+
+\end{tikzpicture}                                     
+
 
 
 
