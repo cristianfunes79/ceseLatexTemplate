@@ -37,6 +37,7 @@
 \fechaFINALTrabajo{23 de octubre de 2021}		%Fecha de defensa pública del trabajo final
 
 
+\usepackage{gensymb}
 \begin{document}
 
 \maketitle
@@ -64,7 +65,7 @@
 Revisión & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Detalles de los cambios realizados} & Fecha      \\ \hline
 1.0      & Creación del documento                                          & 23/10/2020 \\ \hline
 1.1      & Avances hasta el punto 6                                           & 15/11/2020 \\ \hline
-1.2      & Agregado product backlog                                           & 21/11/2020 \\ \hline
+1.2      & Agregado product backlog y correcciones                            & 21/11/2020 \\ \hline
 %1.2      & Otro ejemplo \newline
 %		   Con texto partido \newline
 %		   En varias líneas \newline
@@ -85,7 +86,7 @@ Buenos Aires, \fechaInicioName
 
 \vspace{2cm}
 
-Por medio de la presente se acuerda con el Ing. \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'', consistirá esencialmente en el prototipo preliminar de un sistema de monitoreo y trazabilidad de cadena de frío de medicamentos en tiempo real, y tendrá un presupuesto preliminar estimado de 600 hs de trabajo, con fecha de inicio \fechaInicioName\hspace{1px} y fecha de presentación pública \fechaFinalName.
+Por medio de la presente se acuerda con el Ing. \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'', consistirá esencialmente en el prototipo preliminar de un equipo que posibilite la lectura de temperaturas en heladeras, freezers y ambientes donde se realice almacenaje de medicamentos y que permita al usuario ver los datos en tiempo real, y tendrá un presupuesto preliminar estimado de 667 hs de trabajo, con fecha de inicio \fechaInicioName\hspace{1px} y fecha de presentación pública \fechaFinalName.
 
 Se adjunta a esta acta la planificación inicial.
 
@@ -210,21 +211,21 @@ Para el desarrollo del presente proyecto se supone que:
 \begin{enumerate}
 \item Requerimientos del Sistema
 	\begin{enumerate}
-	\item Las mediciones de temperatura deben ser en grados Celcius.
-	\item Las mediciones de temperatura deben realizarse en intervalos regulares.
+        \item Las mediciones de temperatura deben ser en grados Celcius, en un rango comprendido entre -40\degree C y +85\degree C.
+	\item Las mediciones de temperatura deben realizarse en intervalos regulares, configurables en un rango comprendido entre 30 segundos y 30 minutos.
 	\item El usuario debe poder configurar a través de una interfaz gráfica los siguientes parámetros: rango de temperatura de cada sensor, numero de teléfono de los usuarios para enviar alerta por SMS, período de medición de temperatura.
     \item El equipo central debe poder almacenar un histórico de mediciones de por lo menos las ultimas 2 semanas de funcionamiento.
 	\item El equipo central debe poder enviar SMS de alerta a por lo menos 10 usuarios.
 	\end{enumerate}
 \item Requerimientos de Hardware
 	\begin{enumerate}
-	\item Tanto el equipo central como los nodos sensores deben contar con batería de respaldo para poder seguir funcionando ante un corte de energía.
+	\item Tanto el equipo central como los nodos sensores deben contar con batería de respaldo para poder seguir funcionando ante un corte de energía, durante almenos 6 horas.
 	\item Tanto el equipo central como los nodos sensores deben poder conectarse mediante WiFi.
 	\end{enumerate}
 \item Requerimientos de Firmware
 	\begin{enumerate}
 	\item El firmware de todos los equipos deberá ser escrito en lenguajes C y C++.
-	\item Se utilizará lenguaje Python para desarrollar herramientas que permitan automatizar procesos repetitivos.
+	\item Se utilizará lenguaje Python para desarrollar herramientas que permitan automatizar procesos repetitivos durante el desarrollo del firmware, tales como parsers para extraer comandos AT de los datasheets.
     \item Se desarrollarán tests para probar el correcto funcionamiento del firmware.
 	\end{enumerate}
 \item Requerimientos de trabajo
